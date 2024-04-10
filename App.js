@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, TouchableOpacity, Modal } from "react-native";
+import { styles } from "./src/styles/styles";
 
-export default function App() {
+// Import Hook useState
+import React, { useState } from "react";
+
+// Import Componentes
+import TxtInputComponent from "./src/components/TextInputComponent";
+import { TextInput } from "react-native-web";
+
+export default function Conversão() {
+  const [celsius, setCelsius] = useState("");
+  const [resultado, setResultado] = useState("");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    <View styles={styles.container}>
+      <Text>Conversor de temperatura</Text>
+      <TxtInputComponent
+        txtplace="Digite a temperatura em °C"
+        value={celsius}
+        changeText={setCelsius}
+      />
+      <TouchableOpacity onPress={resultado}>
+        <Text>Converter</Text>
+      </TouchableOpacity>
+      </View>
+  )}
